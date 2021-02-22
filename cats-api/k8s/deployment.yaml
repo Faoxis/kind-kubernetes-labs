@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cats-api
+  labels:
+    app: cats-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: cats-api
+  template:
+    metadata:
+      labels:
+        app: cats-api
+    spec:
+      containers:
+        - name: cats-api
+          image: jusaf/cats-api:1.1.0
+          ports:
+            - containerPort: 8080
+          env:
+            - name: DATASOURCE_HOST
+              value: 192.168.0.16
+            - name: spring.mvc.servlet.path
+              value: /cats-api
+            - name: SPRING_ADMIN
+              value: http://spring-admin/spring-admin

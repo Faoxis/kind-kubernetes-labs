@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: jusaf
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /cats-api
+            backend:
+              serviceName: cats-api
+              servicePort: 80
+          - path: /jokes
+            backend:
+              serviceName: jokes
+              servicePort: 80
+          - path: /spring-admin
+            backend:
+              serviceName: spring-admin
+              servicePort: 80

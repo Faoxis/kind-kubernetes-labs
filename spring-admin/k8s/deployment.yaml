@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-admin
+  labels:
+    app: spring-admin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-admin
+  template:
+    metadata:
+      labels:
+        app: spring-admin
+    spec:
+      containers:
+        - name: spring-admin
+          image: jusaf/spring-admin:1.0.0
+          ports:
+            - containerPort: 8080
+          env:
+            - name: spring.boot.admin.context-path
+              value: /spring-admin

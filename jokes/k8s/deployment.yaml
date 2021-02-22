@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jokes
+  labels:
+    app: jokes
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: jokes
+  template:
+    metadata:
+      labels:
+        app: jokes
+    spec:
+      containers:
+        - name: jokes
+          image: jusaf/jokes:1.1.0
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_ADMIN
+              value: http://spring-admin/spring-admin

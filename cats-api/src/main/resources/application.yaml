@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: cats-api
+  datasource:
+    url: jdbc:postgresql://${DATASOURCE_HOST:localhost}:5444/cats-api
+    username: admin
+    password: admin
+
+  boot:
+    admin:
+      client:
+        instance:
+          prefer-ip: true
+        url: ${SPRING_ADMIN:http://localhost:8080/}
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
